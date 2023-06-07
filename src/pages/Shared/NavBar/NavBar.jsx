@@ -199,72 +199,52 @@ const NavBar = () => {
 
           {user ? (
             <>
-              {user ? (
-                <>
-                  <NavLink
-                    to="/mytoys"
-                    className={({ isActive, isPending }) =>
-                      isPending
-                        ? "pending"
-                        : isActive
-                        ? "text-black px-3 py-2 rounded-md text-xl  font-bold"
-                        : "text-[#1A1919] hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl font-bold"
-                    }
-                  >
-                    Dashboard
-                  </NavLink>
-                  <div className="dropdown dropdown-end">
-                    <label
-                      tabIndex={0}
-                      className="btn btn-ghost btn-circle avatar"
-                    >
-                      <div className="w-10 rounded-full">
-                        <img
-                          title={user && user.displayName}
-                          src={user && user.photoURL}
-                        />
-                      </div>
-                    </label>
-                    <ul
-                      tabIndex={0}
-                      className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-                    >
-                      <li>
-                        <Link to="/" className="justify-between">
-                          Profile
-                          <span className="badge">New</span>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link onClick={handleLogOut} to="/">
-                          Logout
-                        </Link>
-                      </li>
-                    </ul>
+              <Link
+                to="/addtoys"
+                className="text-[#1A1919] hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-bold"
+              >
+                Dashboard
+              </Link>
+              <div className="dropdown dropdown-start">
+                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                  <div className="w-10 rounded-full">
+                    <img
+                      title={user && user.displayName}
+                      src={user && user.photoURL}
+                    />
                   </div>
-                </>
-              ) : (
-                <NavLink
-                  to="/signin"
-                  className={({ isActive, isPending }) =>
-                    isPending
-                      ? "pending"
-                      : isActive
-                      ? "text-black px-3 py-2 rounded-md text-xl  font-bold"
-                      : "text-[#1A1919] hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl  font-bold"
-                  }
+                </label>
+                <ul
+                  tabIndex={0}
+                  className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
                 >
-                  Login
-                </NavLink>
-              )}
+                  <li>
+                    <Link to="/" className="justify-between font-bold">
+                      Profile
+                      <span className="badge">New</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link onClick={handleLogOut} className="font-bold" to="/">
+                      Logout
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </>
           ) : (
-            <Link
-              to="/signin"
-              className="text-[#1A1919] hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-bold"
+            <NavLink
+              to="/login"
+              className={({ isActive, isPending }) =>
+                isPending
+                  ? "pending"
+                  : isActive
+                  ? "text-[#ff7700] px-3 py-2 rounded-md text-xl  font-bold"
+                  : "text-[#1A1919] hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl  font-bold"
+              }
             >
               Login
-            </Link>
+            </NavLink>
           )}
         </div>
       </div>

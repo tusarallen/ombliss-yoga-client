@@ -1,12 +1,13 @@
 import { Helmet } from "react-helmet";
+import Slider from "../Slider/Slider";
 
 const Home = () => {
   return (
     <div>
       <Helmet>
-      <title>ŌmBliss Yoĝa | Home</title>
+        <title>ŌmBliss Yoĝa | Home</title>
       </Helmet>
-      <h2>This is Home</h2>
+      <Slider />
     </div>
   );
 };

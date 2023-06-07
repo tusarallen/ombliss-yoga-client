@@ -79,13 +79,13 @@ const Login = () => {
                   />
                   <button
                     type="button"
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                    className="absolute inset-y-0 -right-5 md:right-0 pr-3 flex items-center"
                     onClick={togglePasswordVisibility}
                   >
                     {showPassword ? (
-                      <IoEyeOff className="text-gray-500" size={20} />
+                      <IoEyeOff className="text-gray-500" size={25} />
                     ) : (
-                      <IoEye className="text-gray-500" size={20} />
+                      <IoEye className="text-gray-500" size={25} />
                     )}
                   </button>
                 </div>
