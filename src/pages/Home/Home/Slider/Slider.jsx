@@ -1,33 +1,45 @@
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import image1 from "../../../../assets/images/yoga- (1).png";
-import image2 from "../../../../assets/images/yoga- (2).png";
-import image3 from "../../../../assets/images/yoga- (3).png";
-import image4 from "../../../../assets/images/yoga- (4).png";
-import image5 from "../../../../assets/images/yoga- (5).png";
-import image6 from "../../../../assets/images/yoga- (6).png";
 
 const Slider = () => {
   return (
     <div className="text-center w-11/12 mx-auto mt-5 mb-8">
       <Carousel>
         <div>
-          <img className="rounded-lg" src={image6} />
+          <img
+            className="rounded-lg"
+            src="https://i.ibb.co/23D5JPZ/yoga-6.png"
+          />
         </div>
         <div>
-          <img src={image5} />
+          <img
+            className="rounded-lg"
+            src="https://i.ibb.co/vVKSgtm/yoga-5.png"
+          />
         </div>
         <div>
-          <img src={image1} />
+          <img
+            className="rounded-lg"
+            src="https://i.ibb.co/4sbhMb8/yoga-1.png"
+          />
         </div>
         <div>
-          <img src={image3} />
+          <img
+            className="rounded-lg"
+            src="https://i.ibb.co/tLGzC7w/yoga-3.png"
+          />
         </div>
         <div>
-          <img src={image4} />
+          <img
+            className="rounded-lg"
+            src="https://i.ibb.co/mJyMxQn/yoga-4.png"
+          />
         </div>
         <div>
-          <img src={image2} />
+          <img
+            className="rounded-lg"
+            src="https://i.ibb.co/rxygzJc/yoga-2.png"
+          />
         </div>
       </Carousel>
     </div>
