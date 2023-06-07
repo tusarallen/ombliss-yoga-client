@@ -22,7 +22,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="bg-gray-100 w-full rounded-md p-2">
+    <nav className="bg-gray-100 w-full rounded-md p-1">
       <div className="max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-16">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -152,7 +152,7 @@ const NavBar = () => {
                   </>
                 ) : (
                   <NavLink
-                    to="/signin"
+                    to="/login"
                     className={({ isActive, isPending }) =>
                       isPending
                         ? "pending"
@@ -178,21 +178,21 @@ const NavBar = () => {
         <div className="px-2 pt-2 pb-3 space-y-1">
           <Link
             to="/"
-            className="text-[#ff7700] hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-bold"
+            className="text-black hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-bold"
           >
             Home
           </Link>
 
           <Link
             to="/alltoys"
-            className="text-[#ff7700] hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-bold"
+            className="text-black hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-bold"
           >
             Instructors
           </Link>
 
           <Link
             to="/blog"
-            className="text-[#ff7700] hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-bold"
+            className="text-black hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-bold"
           >
             Classes
           </Link>
@@ -207,7 +207,7 @@ const NavBar = () => {
                       isPending
                         ? "pending"
                         : isActive
-                        ? "text-[#ff7700] px-3 py-2 rounded-md text-xl  font-bold"
+                        ? "text-black px-3 py-2 rounded-md text-xl  font-bold"
                         : "text-[#1A1919] hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl font-bold"
                     }
                   >
@@ -250,7 +250,7 @@ const NavBar = () => {
                     isPending
                       ? "pending"
                       : isActive
-                      ? "text-[#ff7700] px-3 py-2 rounded-md text-xl  font-bold"
+                      ? "text-black px-3 py-2 rounded-md text-xl  font-bold"
                       : "text-[#1A1919] hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl  font-bold"
                   }
                 >

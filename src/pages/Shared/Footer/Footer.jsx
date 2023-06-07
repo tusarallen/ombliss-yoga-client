@@ -11,7 +11,7 @@ import {
 const Footer = () => {
   return (
     <div>
-      <footer aria-label="Site Footer" className="bg-white">
+      <footer aria-label="Site Footer" className="bg-gray-100">
         <div className="max-w-screen-xl px-4 py-8 mx-auto space-y-8 sm:px-6 lg:space-y-8 lg:px-8">
           <div className="sm:flex sm:items-center sm:justify-between">
             <div className="text-teal-600">
