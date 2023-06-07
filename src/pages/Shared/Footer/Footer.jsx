@@ -125,7 +125,7 @@ const Footer = () => {
             </div>
 
             <div>
-              <p className="font-bold text-2xl text-gray-900">Company</p>
+              <p className="font-bold text-2xl text-gray-900">About</p>
 
               <nav aria-label="Footer Navigation - Company" className="mt-6">
                 <ul className="space-y-4 text-sm">
@@ -160,7 +160,7 @@ const Footer = () => {
             </div>
 
             <div>
-              <p className="font-bold text-2xl text-gray-900">Helpful Links</p>
+              <p className="font-bold text-2xl text-gray-900">Contact</p>
 
               <nav aria-label="Footer Navigation - Company" className="mt-6">
                 <ul className="space-y-4 text-sm">

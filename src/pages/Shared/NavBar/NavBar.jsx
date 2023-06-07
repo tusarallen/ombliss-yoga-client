@@ -66,7 +66,7 @@ const NavBar = () => {
             </div>
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
-                <div className="flex justify-center items-center md:mr-80 gap-8">
+                <div className="flex justify-center items-center md:mr-[260px] gap-8">
                   <NavLink
                     to="/"
                     className={({ isActive, isPending }) =>

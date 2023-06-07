@@ -174,8 +174,8 @@ const SIgnUp = () => {
             </form>
             <p className="md:-mt-5 p-3 text-2xl font-bold">
               <small>
-                Already have an account{" "}
-                <Link className="underline font-bold text-[green]" to="/login">
+                Already have an account ? please 
+                <Link className="underline font-bold text-[green] ml-2" to="/login">
                   Login
                 </Link>
               </small>
