@@ -8,6 +8,7 @@ import { AuthContext } from "../../../providers/AuthProvider";
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
+  console.log(user)
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -134,16 +135,16 @@ const NavBar = () => {
                       </label>
                       <ul
                         tabIndex={0}
-                        className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                        className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52 z-10"
                       >
                         <li>
-                          <Link to="/" className="justify-between">
+                          <Link to="/" className="justify-between font-bold">
                             Profile
-                            <span className="badge">New</span>
+                            <span className="badge font-bold">New</span>
                           </Link>
                         </li>
                         <li>
-                          <Link onClick={handleLogOut} to="/">
+                          <Link className="font-bold" onClick={handleLogOut} to="/">
                             Logout
                           </Link>
                         </li>

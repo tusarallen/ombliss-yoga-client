@@ -15,8 +15,8 @@ const SIgnUp = () => {
   const { createUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const onSubmit = () => {
-    createUser(email, password)
+  const onSubmit = (data) => {
+    createUser(data.email, data.password)
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
@@ -174,8 +174,11 @@ const SIgnUp = () => {
             </form>
             <p className="md:-mt-5 p-3 text-2xl font-bold">
               <small>
-                Already have an account ? please 
-                <Link className="underline font-bold text-[green] ml-2" to="/login">
+                Already have an account ? please
+                <Link
+                  className="underline font-bold text-[green] ml-2"
+                  to="/login"
+                >
                   Login
                 </Link>
               </small>
