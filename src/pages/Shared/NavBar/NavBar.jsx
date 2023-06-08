@@ -110,7 +110,7 @@ const NavBar = () => {
                 {user ? (
                   <>
                     <NavLink
-                      to="/mytoys"
+                      to="/dashboard/manageUsers"
                       className={({ isActive, isPending }) =>
                         isPending
                           ? "pending"
