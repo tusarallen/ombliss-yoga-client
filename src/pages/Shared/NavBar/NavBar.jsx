@@ -8,7 +8,7 @@ import { AuthContext } from "../../../providers/AuthProvider";
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
-  console.log(user)
+  console.log(user);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -82,7 +82,7 @@ const NavBar = () => {
                   </NavLink>
 
                   <NavLink
-                    to="/alltoys"
+                    to="/instructors"
                     className={({ isActive, isPending }) =>
                       isPending
                         ? "pending"
@@ -95,7 +95,7 @@ const NavBar = () => {
                   </NavLink>
 
                   <NavLink
-                    to="/blog"
+                    to="/classes"
                     className={({ isActive, isPending }) =>
                       isPending
                         ? "pending"
@@ -144,7 +144,11 @@ const NavBar = () => {
                           </Link>
                         </li>
                         <li>
-                          <Link className="font-bold" onClick={handleLogOut} to="/">
+                          <Link
+                            className="font-bold"
+                            onClick={handleLogOut}
+                            to="/"
+                          >
                             Logout
                           </Link>
                         </li>

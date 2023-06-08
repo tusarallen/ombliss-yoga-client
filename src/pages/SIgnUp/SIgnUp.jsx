@@ -1,28 +1,68 @@
 /* eslint-disable no-undef */
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
+import Swal from "sweetalert2";
 
-const SIgnUp = () => {
+const SignUp = () => {
+  const [passwordMatch, setPasswordMatch] = useState(false);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { createUser } = useContext(AuthContext);
+  const { createUser, profileUpdate } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    createUser(data.email, data.password)
-      .then((result) => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
-        navigate("/");
-      })
-      .catch((error) => console.log(error.message));
+    if (!passwordMatch) {
+      console.log("Passwords do not match");
+      return;
+    }
+
+    createUser(data.email, data.password).then((result) => {
+      const loggedUser = result.user;
+      console.log(loggedUser);
+      profileUpdate(data.name, data.email, data.photoURL)
+        .then(() => {
+          const saveUser = {
+            name: data.name,
+            email: data.email,
+            photo: data.photoURL,
+          };
+          console.log(saveUser);
+          fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(saveUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "User Created Successfully",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+                navigate("/");
+              }
+            })
+            .catch((error) => console.log(error));
+        })
+        .catch((error) => console.log(error));
+      });
+  };
+
+  const checkPasswordMatch = (password, confirmPassword) => {
+    setPasswordMatch(password === confirmPassword);
   };
 
   return (
@@ -76,6 +116,7 @@ const SIgnUp = () => {
                 </label>
                 <input
                   type="password"
+                  id="password"
                   name="password"
                   {...register("password", {
                     required: true,
@@ -85,6 +126,12 @@ const SIgnUp = () => {
                   })}
                   placeholder="password"
                   className="input input-bordered"
+                  onChange={(e) =>
+                    checkPasswordMatch(
+                      e.target.value,
+                      document.getElementById("confirmPassword").value
+                    )
+                  }
                 />
                 {errors.password?.type === "required" && (
                   <p className="text-red-600">Password is required</p>
@@ -99,16 +146,11 @@ const SIgnUp = () => {
                 )}
                 {errors.password?.type === "pattern" && (
                   <p className="text-red-600">
-                    Password must have one Uppercase one lower case, one number
+                    Password must have one uppercase, one lowercase, one number,
                     and one special character.
                   </p>
                 )}
                 <label className="label"></label>
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
-                </label>
               </div>
               <div className="form-control">
                 <label className="label">
@@ -116,39 +158,43 @@ const SIgnUp = () => {
                 </label>
                 <input
                   type="password"
-                  name="password"
-                  {...register("password", {
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  {...register("confirmPassword", {
                     required: true,
                     minLength: 6,
                     maxLength: 20,
                     pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
                   })}
-                  placeholder="password"
+                  placeholder="confirm password"
                   className="input input-bordered"
+                  onChange={(e) =>
+                    checkPasswordMatch(
+                      document.getElementById("password").value,
+                      e.target.value
+                    )
+                  }
                 />
-                {errors.password?.type === "required" && (
-                  <p className="text-red-600">Password is required</p>
+                {errors.confirmPassword?.type === "required" && (
+                  <p className="text-red-600">Confirm Password is required</p>
                 )}
-                {errors.password?.type === "minLength" && (
-                  <p className="text-red-600">Password must be 6 characters</p>
-                )}
-                {errors.password?.type === "maxLength" && (
+                {errors.confirmPassword?.type === "minLength" && (
                   <p className="text-red-600">
-                    Password must be less than 20 characters
+                    Confirm Password must be 6 characters
                   </p>
                 )}
-                {errors.password?.type === "pattern" && (
+                {errors.confirmPassword?.type === "maxLength" && (
                   <p className="text-red-600">
-                    Password must have one Uppercase one lower case, one number
-                    and one special character.
+                    Confirm Password must be less than 20 characters
+                  </p>
+                )}
+                {errors.confirmPassword?.type === "pattern" && (
+                  <p className="text-red-600">
+                    Confirm Password must have one uppercase, one lowercase, one
+                    number, and one special character.
                   </p>
                 )}
                 <label className="label"></label>
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
-                </label>
               </div>
               <div className="form-control">
                 <label className="label">
@@ -174,7 +220,7 @@ const SIgnUp = () => {
             </form>
             <p className="md:-mt-5 p-3 text-2xl font-bold">
               <small>
-                Already have an account ? please
+                Already have an account? Please{" "}
                 <Link
                   className="underline font-bold text-[green] ml-2"
                   to="/login"
@@ -191,4 +237,4 @@ const SIgnUp = () => {
   );
 };
 
-export default SIgnUp;
+export default SignUp;

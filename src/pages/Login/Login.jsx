@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -5,6 +6,7 @@ import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import { IoEye, IoEyeOff } from "react-icons/io5";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
@@ -13,27 +15,31 @@ const Login = () => {
 
   const from = location.state?.from?.pathname || "/";
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState(null); // Add the error state
 
-  const handleLogin = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    console.log(email, password);
-    signIn(email, password).then((result) => {
-      const user = result.user;
-      console.log(user);
-      Swal.fire({
-        title: "user Login Successfully",
-        showClass: {
-          popup: "animate__animated animate__fadeInDown",
-        },
-        hideClass: {
-          popup: "animate__animated animate__fadeOutUp",
-        },
+  const { register, handleSubmit } = useForm();
+
+  const handleLogin = (data) => {
+    const { email, password } = data;
+
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        Swal.fire({
+          title: "User Login Successfully",
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+          hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+          },
+        });
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        setError("Password not matched"); // Set the error message
       });
-      navigate(from, { replace: true });
-    });
   };
 
   const togglePasswordVisibility = () => {
@@ -54,7 +60,8 @@ const Login = () => {
             <img src="https://i.ibb.co/WDtxnhL/image.png" alt="" />
           </div>
           <div className="card flex-shrink-0 shadow-2xl bg-base-200 md:w-[400px] m-7 md:m-0">
-            <form onSubmit={handleLogin} className="card-body">
+            <form onSubmit={handleSubmit(handleLogin)} className="card-body">
+              {error && <div className="text-red-500 mb-2">{error}</div>}
               <div className="form-control">
                 <label className="label">
                   <span className=" text-xl">Email</span>
@@ -64,6 +71,7 @@ const Login = () => {
                   name="email"
                   placeholder="email"
                   className="input input-bordered"
+                  {...register("email", { required: true })}
                 />
               </div>
               <div className="form-control">
@@ -76,6 +84,7 @@ const Login = () => {
                     name="password"
                     placeholder="password"
                     className="input input-bordered pr-10"
+                    {...register("password", { required: true })}
                   />
                   <button
                     type="button"
