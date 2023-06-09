@@ -1,8 +1,11 @@
 import { FaAddressBook, FaHome, FaHouseDamage, FaUsers } from "react-icons/fa";
 import { Link, Outlet } from "react-router-dom";
+import useAdmin from "../hooks/useAdmin";
+import useInstructors from "../hooks/useInstructors";
 
 const Dashboard = () => {
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructors();
 
   return (
     <div className="drawer lg:drawer-open">
@@ -22,7 +25,7 @@ const Dashboard = () => {
           {isAdmin ? (
             <>
               <li className="font-bold text-2xl">
-                <Link to="/dashboard/adminHome">
+                <Link to="/dashboard/manageUsers">
                   <FaHome className="mr-4 text-red-500" />{" "}
                   <span className="text-red-500">Admin Home</span>
                 </Link>
@@ -38,12 +41,12 @@ const Dashboard = () => {
                 </Link>
               </li>
             </>
-          ) : (
+          ) : isInstructor ? (
             <>
               <li className="font-bold text-2xl">
                 <Link to="/dashboard/adminHome">
                   <FaHome className="mr-4 text-red-500" />{" "}
-                  <span className="text-red-500">Instructor Home</span>
+                  <span className="text-red-500">Instructors Home</span>
                 </Link>
               </li>
               <li className="font-bold text-2xl my-8">
@@ -54,6 +57,30 @@ const Dashboard = () => {
               <li className="font-bold text-2xl">
                 <Link to="/dashboard/manageUsers">
                   <FaUsers className="mr-4" /> My Classes
+                </Link>
+              </li>
+            </>
+          ) : (
+            <>
+              <li className="font-bold text-2xl">
+                <Link to="/dashboard/adminHome">
+                  <FaHome className="mr-4 text-red-500" />{" "}
+                  <span className="text-red-500">Students Home</span>
+                </Link>
+              </li>
+              <li className="font-bold text-2xl my-[12px]">
+                <Link to="/dashboard/manageClasses">
+                  <FaAddressBook className="mr-4" /> Selected Classes
+                </Link>
+              </li>
+              <li className="font-bold text-2xl my-3">
+                <Link to="/dashboard/manageUsers">
+                  <FaUsers className="mr-4" /> Enrolled Classes
+                </Link>
+              </li>
+              <li className="font-bold text-2xl mt-1">
+                <Link to="/dashboard/manageUsers">
+                  <FaUsers className="mr-4" /> Payment History
                 </Link>
               </li>
             </>

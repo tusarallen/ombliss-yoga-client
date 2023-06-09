@@ -8,6 +8,7 @@ import InstructorsPage from "../components/InstructorsPage.jsx/InstructorsPage";
 import ClassesPage from "../components/ClassesPage/ClassesPage";
 import Dashboard from "../Layout/Dashboard";
 import ManageUsers from "../Dashboard/ManageUsers/ManageUsers";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -43,7 +44,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "manageUsers",
-        element: <ManageUsers />,
+        element: (
+          <AdminRoute>
+            <ManageUsers />
+          </AdminRoute>
+        ),
       },
     ],
   },
