@@ -44,18 +44,18 @@ const Dashboard = () => {
           ) : isInstructor ? (
             <>
               <li className="font-bold text-2xl">
-                <Link to="/dashboard/adminHome">
+                <Link to="/dashboard/manageUsers">
                   <FaHome className="mr-4 text-red-500" />{" "}
                   <span className="text-red-500">Instructors Home</span>
                 </Link>
               </li>
               <li className="font-bold text-2xl my-8">
-                <Link to="/dashboard/manageClasses">
+                <Link to="/dashboard/addclass">
                   <FaAddressBook className="mr-4" /> Add a Class
                 </Link>
               </li>
               <li className="font-bold text-2xl">
-                <Link to="/dashboard/manageUsers">
+                <Link to="/dashboard/myclass">
                   <FaUsers className="mr-4" /> My Classes
                 </Link>
               </li>
