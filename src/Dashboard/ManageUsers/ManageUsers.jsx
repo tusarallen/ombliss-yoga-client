@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
@@ -8,8 +7,6 @@ const ManageUsers = () => {
     const res = await fetch("http://localhost:5000/users");
     return res.json();
   });
-
-  const [userRoles, setUserRoles] = useState({});
 
   const updateUserRole = (user, role) => {
     fetch(`http://localhost:5000/users/${role}/${user?._id}`, {
@@ -23,19 +20,12 @@ const ManageUsers = () => {
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: `Modified User Successfully!`,
+            title: `Modified User Successsfully!`,
             showConfirmButton: false,
             timer: 1000,
           });
         }
       });
-  };
-
-  const toggleUserRole = (userId, role) => {
-    setUserRoles((prevRoles) => ({
-      ...prevRoles,
-      [userId]: role,
-    }));
   };
 
   return (
@@ -54,7 +44,7 @@ const ManageUsers = () => {
               <th className="font-bold text-2xl text-black">Image</th>
               <th className="font-bold text-2xl text-black">Name</th>
               <th className="font-bold text-2xl text-black">Email</th>
-              <th className="font-bold text-2xl text-black">Role</th>
+              <th className="font-bold text-2xl text-black ml-12">Role</th>
             </tr>
           </thead>
           <tbody>
@@ -74,37 +64,31 @@ const ManageUsers = () => {
                 <td className="font-bold text-xl">{user.name}</td>
                 <td className="font-bold text-xl">{user.email}</td>
                 <td>
-                  {userRoles[user._id] === "admin" ? (
+                  {user?.role === "admin" ? (
                     <button className="rounded-md hover:bg-black bg-success hover:text-white text-[black] p-2 font-bold text-base">
                       Admin
                     </button>
                   ) : (
                     <button
-                      onClick={() => {
-                        toggleUserRole(user._id, "admin");
-                        updateUserRole(user, "admin");
-                      }}
+                      onClick={() => updateUserRole(user, "admin")}
                       className="rounded-md hover:bg-black bg-[orange] hover:text-white text-[black] p-2 font-bold text-base"
                     >
                       Make Admin
                     </button>
                   )}
-                  {userRoles[user._id] === "instructor" ? (
+                  {user?.role === "instructor" ? (
                     <button className="rounded-md hover:bg-black bg-success hover:text-white text-[black] p-2 font-bold text-base ml-2">
                       Instructor
                     </button>
                   ) : (
                     <button
-                      onClick={() => {
-                        toggleUserRole(user._id, "instructor");
-                        updateUserRole(user, "instructor");
-                      }}
+                      onClick={() => updateUserRole(user, "instructor")}
                       className="rounded-md hover:bg-black bg-[orange] hover:text-white text-[black] p-2 font-bold text-base ml-2"
                     >
                       Make Instructor
                     </button>
                   )}
-                  {userRoles[user._id] === "student" && (
+                  {user?.role === "student" && (
                     <button className="rounded-md hover:bg-black bg-success hover:text-white text-[black] p-2 font-bold text-base">
                       Student
                     </button>
