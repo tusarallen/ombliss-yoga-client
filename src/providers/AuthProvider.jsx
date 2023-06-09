@@ -11,6 +11,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import app from "../firebase/firebase.config";
+import axios from "axios";
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -52,6 +53,20 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscibe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      // set and get token
+      if (currentUser) {
+        axios
+          .post("https://bistro-boss-server-red-iota.vercel.app/jwt", {
+            email: currentUser.email,
+          })
+          .then((data) => {
+            console.log(data.data.token);
+            localStorage.setItem("access-token", data.data.token);
+            setLoading(false);
+          });
+      } else {
+        localStorage.removeItem("access-token");
+      }
       setLoading(false);
     });
 
