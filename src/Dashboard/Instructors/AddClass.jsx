@@ -33,15 +33,16 @@ const AddClass = () => {
             seat: parseFloat(seat),
             price: parseFloat(price),
             image: imgUrl,
+            status: "pending"
           };
-          axiosSecure.post("/menu", newItem).then((data) => {
+          axiosSecure.post("/instructors", newItem).then((data) => {
             console.log(data.data);
             if (data.data.insertedId) {
               reset();
               Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: "Your Food Add On The Cart",
+                title: "Your Class Add On The Cart",
                 showConfirmButton: false,
                 timer: 1500,
               });

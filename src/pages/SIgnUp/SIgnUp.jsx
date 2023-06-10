@@ -50,7 +50,7 @@ const SignUp = () => {
                   icon: "success",
                   title: "User Created Successfully",
                   showConfirmButton: false,
-                  timer: 1500,
+                  timer: 500,
                 });
                 navigate("/");
               }
