@@ -12,6 +12,7 @@ import AdminRoute from "./AdminRoute";
 import AddClass from "../Dashboard/Instructors/AddClass";
 import MyClass from "../Dashboard/Instructors/MyClass";
 import ManageClasses from "../Dashboard/ManageClasses/ManageClasses";
+import UpdateData from "../Dashboard/Instructors/UpdateData";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,12 @@ const router = createBrowserRouter([
       {
         path: "addclass",
         element: <AddClass />,
+      },
+      {
+        path: "instructors/:id",
+        element: <UpdateData />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/instructors/${params.id}`),
       },
       // admin routes
       {
