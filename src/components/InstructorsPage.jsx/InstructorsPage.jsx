@@ -1,21 +1,21 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import TitleSection from "../TitleSection";
 import CardInstructor from "./CardInstructor";
 
 const InstructorsPage = () => {
-  const [instructors, setInstructors] = useState([]);
-  useEffect(() => {
-    fetch("http://localhost:5000/users")
-      .then((res) => res.json())
-      .then((data) => setInstructors(data));
-  }, []);
+  const { data: instructors = [] } = useQuery(["instructors"], async () => {
+    const res = await fetch("http://localhost:5000/instructorusers");
+    return res.json();
+  });
   console.log(instructors);
 
   return (
     <div>
-      <h2 className="font-bold text-3xl text-center text-red-500 my-8">
-        Our Instructors
-      </h2>
-      <div className="grid md:grid-cols-3 grid-cols-1 gap-12 w-11/12 mx-auto">
+      <TitleSection
+        subHeading={"Familiar To"}
+        heading={"Our Advicer"}
+      ></TitleSection>
+      <div className="mt-8 grid md:grid-cols-3 grid-cols-1 gap-8 w-11/12 mx-auto mb-8">
         {instructors.map((instructor) => (
           <CardInstructor key={instructor._id} instructor={instructor} />
         ))}

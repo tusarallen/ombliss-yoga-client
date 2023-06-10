@@ -1,15 +1,13 @@
-import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
+// import { useQuery } from "@tanstack/react-query";
 import ClassCard from "./ClassCard";
 import TitleSection from "../../components/TitleSection";
+import { useQuery } from "@tanstack/react-query";
 
 const MyClass = () => {
-  const [axiosSecure] = useAxiosSecure();
   const { data: instructors = [] } = useQuery(["instructors"], async () => {
-    const res = await axiosSecure.get("/instructors");
-    return res.data;
+    const res = await fetch("http://localhost:5000/instructors");
+    return res.json();
   });
-  console.log(instructors);
 
   return (
     <>

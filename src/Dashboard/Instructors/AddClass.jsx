@@ -57,7 +57,7 @@ const AddClass = () => {
       <div>
         <TitleSection
           subHeading={"what's new?"}
-          heading={"Add an Item"}
+          heading={"Add A Class"}
         ></TitleSection>
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>

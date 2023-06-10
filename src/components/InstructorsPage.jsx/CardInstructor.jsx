@@ -1,16 +1,14 @@
 /* eslint-disable react/prop-types */
 const CardInstructor = ({ instructor }) => {
-  const { name, email, photo } = instructor;
-
+  const { photo, name, email } = instructor;
   return (
-    <div className="card w-96 h-96 glass mb-12">
+    <div className="card card-compact w-96 bg-base-100 shadow-xl">
       <figure>
-        <img src={photo} alt="car!" />
+        <img className="h-[300px]" src={photo} alt="Shoes" />
       </figure>
-      <div className="card-body">
-        <h2 className="card-title"><span className="font-bold text-red-500">Instructor Name:</span> {name}</h2>
-        <p><span className="font-bold text-red-500">Instructor Email:</span> {email}</p>
-        <div className="card-actions justify-end"></div>
+      <div className="card-body mt-8">
+        <h2 className="font-bold mt-4 text-2xl">Name: {name}</h2>
+        <p className="font-bold mt-4 text-xl">Email: {email}</p>
       </div>
     </div>
   );

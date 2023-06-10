@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
-
-const ClassCard = ({ instructor }) => {
-  const { className, email, price, seat, image, name } = instructor;
+const ClassManageCard = ({ instructor }) => {
+  const { className, email, price, status, seat, image, name } = instructor;
 
   return (
     <div className="w-11/12 mx-auto mb-7">
@@ -19,26 +18,29 @@ const ClassCard = ({ instructor }) => {
             <span className="text-xl font-bold text-black">{email}</span>
           </h2>
           <p>
-            <span className="font-bold text-[green] text-2xl">
+            <span className="font-bold text-[green] text-2zl text-2xl">
               Class:
             </span>{" "}
             <span className="text-xl font-bold text-black">{className}</span>
           </p>
           <div className="flex">
-            <div>
+            <p>
               <span className="font-bold text-[green] text-2xl">Seat:</span>{" "}
               <span className="text-xl font-bold text-black">{seat}</span>
-            </div>
-            <div>
+            </p>
+            <p>
               <span className="font-bold text-[green] text-2xl">Price:</span>{" "}
               <span className="text-xl font-bold text-black">{price}</span>
-            </div>
+            </p>
           </div>
-          <button className="btn btn-success mt-5">Update</button>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
+            <button className="btn btn-info">{status}</button>
+            <button className="btn btn-error">Feedback</button>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default ClassCard;
+export default ClassManageCard;

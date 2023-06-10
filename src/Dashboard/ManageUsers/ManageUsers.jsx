@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import TitleSection from "../../components/TitleSection";
 
 const ManageUsers = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -35,10 +36,11 @@ const ManageUsers = () => {
       <Helmet>
         <title>ŌmBliss Yoĝa | Manage Users</title>
       </Helmet>
-      <h2 className="font-bold text-3xl text-center text-red-500 my-8">
-        Manage All Of Your Users Here:
-      </h2>
-      <div className="overflow-x-auto">
+      <TitleSection
+        subHeading={"Hi Admin?"}
+        heading={"Manage Users"}
+      ></TitleSection>
+      <div className="overflow-x-auto mt-8">
         <table className="table">
           <thead>
             <tr>
@@ -52,7 +54,7 @@ const ManageUsers = () => {
           <tbody>
             {users.map((user, index) => (
               <tr key={user._id}>
-                <td>{index + 1}</td>
+                <td className="font-bold text-xl">{index + 1}</td>
                 <td>
                   <div className="avatar">
                     <div className="mask mask-squircle w-12 h-12">

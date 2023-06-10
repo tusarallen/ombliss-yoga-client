@@ -1,4 +1,4 @@
-import { FaAddressBook, FaHome, FaHouseDamage, FaUsers } from "react-icons/fa";
+import { FaAddressBook, FaHouseDamage, FaUsers } from "react-icons/fa";
 import { Link, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import useInstructors from "../hooks/useInstructors";
@@ -24,12 +24,7 @@ const Dashboard = () => {
         <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
           {isAdmin ? (
             <>
-              <li className="font-bold text-2xl">
-                <Link to="/dashboard/manageUsers">
-                  <FaHome className="mr-4 text-red-500" />{" "}
-                  <span className="text-red-500">Admin Home</span>
-                </Link>
-              </li>
+              <span className="ml-4 font-bold text-3xl text-red-500">Hi Admin !</span>
               <li className="font-bold text-2xl my-8">
                 <Link to="/dashboard/manageClasses">
                   <FaAddressBook className="mr-4" /> Manage Classes
@@ -43,12 +38,7 @@ const Dashboard = () => {
             </>
           ) : isInstructor ? (
             <>
-              <li className="font-bold text-2xl">
-                <Link to="/dashboard/manageUsers">
-                  <FaHome className="mr-4 text-red-500" />{" "}
-                  <span className="text-red-500">Instructors Home</span>
-                </Link>
-              </li>
+              <span className="ml-4 font-bold text-3xl text-red-500">Hi Instructors !</span>
               <li className="font-bold text-2xl my-8">
                 <Link to="/dashboard/addclass">
                   <FaAddressBook className="mr-4" /> Add a Class
@@ -62,12 +52,7 @@ const Dashboard = () => {
             </>
           ) : (
             <>
-              <li className="font-bold text-2xl">
-                <Link to="/dashboard/adminHome">
-                  <FaHome className="mr-4 text-red-500" />{" "}
-                  <span className="text-red-500">Students Home</span>
-                </Link>
-              </li>
+              <span className="ml-4 font-bold text-3xl text-red-500">Hi Students !</span>
               <li className="font-bold text-2xl my-[12px]">
                 <Link to="/dashboard/manageClasses">
                   <FaAddressBook className="mr-4" /> Selected Classes
