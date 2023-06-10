@@ -3,7 +3,7 @@ import TitleSection from "../../components/TitleSection";
 import ClassManageCard from "./ClassManageCard";
 
 const ManageClasses = () => {
-    const { data: instructors = [] } = useQuery(["instructors"], async () => {
+    const { data: instructors = [] , refetch } = useQuery(["instructors"], async () => {
         const res = await fetch("http://localhost:5000/instructors");
         return res.json();
       });
@@ -17,7 +17,7 @@ const ManageClasses = () => {
       ></TitleSection>
       <div className="mt-8">
         {instructors.map((instructor) => (
-          <ClassManageCard key={instructor._id} instructor={instructor} />
+          <ClassManageCard key={instructor._id} instructor={instructor} refetch={refetch} />
         ))}
       </div>
     </>

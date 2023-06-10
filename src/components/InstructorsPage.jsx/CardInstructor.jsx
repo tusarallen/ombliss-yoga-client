@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 const CardInstructor = ({ instructor }) => {
-  const { photo, name, email } = instructor;
+  const { photo, name, email , feedback } = instructor;
+  console.log(instructor)
   return (
     <div className="card card-compact w-96 bg-base-100 shadow-xl">
       <figure>
@@ -9,6 +10,7 @@ const CardInstructor = ({ instructor }) => {
       <div className="card-body mt-8">
         <h2 className="font-bold mt-4 text-2xl">Name: {name}</h2>
         <p className="font-bold mt-4 text-xl">Email: {email}</p>
+        <p className="font-bold mt-4 text-xl">FeedBack: {feedback}</p>
       </div>
     </div>
   );

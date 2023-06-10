@@ -4,11 +4,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
+import useAdmin from "../../../hooks/useAdmin";
+import useInstructors from "../../../hooks/useInstructors";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   console.log(user);
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructors();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -110,7 +114,13 @@ const NavBar = () => {
                 {user ? (
                   <>
                     <NavLink
-                      to="/dashboard"
+                      to={
+                        isAdmin
+                          ? "/dashboard/manageUsers"
+                          : isInstructor
+                          ? "/dashboard/myclass"
+                          : "/dashboard/myselectedclass"
+                      }
                       className={({ isActive, isPending }) =>
                         isPending
                           ? "pending"
