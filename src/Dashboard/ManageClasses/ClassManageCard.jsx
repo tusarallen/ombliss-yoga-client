@@ -66,7 +66,7 @@ const ClassManageCard = ({ instructor, refetch }) => {
       <div className="card card-side bg-base-100 shadow-2xl">
         <figure>
           <img
-            className="rounded-md h-[300px] w-[530px] ml-4"
+            className="rounded-md h-[300px] w-[500px] ml-4"
             src={image}
             alt="Movie"
           />
@@ -98,19 +98,19 @@ const ClassManageCard = ({ instructor, refetch }) => {
             <button
               onClick={() => handleApprovedButton(_id)}
               className="btn btn-info"
-              disabled={status === "approved"}
+              disabled={status === "approved" || status === "denied"}
             >
               Approved
             </button>
             <button
               onClick={() => handleDeniedButton(_id)}
               className="btn btn-error"
-              disabled={status === "denied"}
+              disabled={status === "denied" || status === "approved"}
             >
               Denied
             </button>
             <button className="btn" onClick={() => handleFeedbackButton(_id)}>
-              Open Modal
+              FeedBack
             </button>
           </div>
         </div>
@@ -130,6 +130,7 @@ const ClassManageCard = ({ instructor, refetch }) => {
                 Close
               </button>
               <button
+              className="bg-gray-700"
                 onClick={() => handleSendFeedBack(_id)}
                 disabled={!sendFeedBack}
               >

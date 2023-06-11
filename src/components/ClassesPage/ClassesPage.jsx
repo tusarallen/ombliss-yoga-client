@@ -15,10 +15,10 @@ const ClassesPage = () => {
         subHeading={"Hi Students?"}
         heading={"Enrolled Classes Here"}
       ></TitleSection>
-      <div className="w-3/5 mx-auto mb-8">
-        {
-          classes.map(selectClass => <CardClass key={selectClass._id} selectClass={selectClass}/>)
-        }
+      <div className="grid grid-cols-1 md:grid-cols-3 mt-12 gap-12 w-11/12 mx-auto mb-8 text-left">
+        {classes.map((selectClass) => (
+          <CardClass key={selectClass._id} selectClass={selectClass} />
+        ))}
       </div>
     </div>
   );

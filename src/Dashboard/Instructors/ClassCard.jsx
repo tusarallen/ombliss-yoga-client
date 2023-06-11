@@ -3,7 +3,8 @@
 import { Link } from "react-router-dom";
 
 const ClassCard = ({ instructor }) => {
-  const { className, email, price, seat, image, name, _id } = instructor;
+  const { className, email, price, seat, image, name, _id, feedback } =
+    instructor;
 
   return (
     <div className="w-11/12 mx-auto mb-7">
@@ -36,6 +37,10 @@ const ClassCard = ({ instructor }) => {
             <div>
               <span className="font-bold text-[green] text-2xl">Price:</span>{" "}
               <span className="text-xl font-bold text-black">{price}</span>
+            </div>
+            <div>
+              <span className="font-bold text-[green] text-2xl">FeedBack:</span>{" "}
+              <span className="text-xl font-bold text-black">{feedback}</span>
             </div>
           </div>
           <Link to={`/dashboard/instructors/${_id}`}>
