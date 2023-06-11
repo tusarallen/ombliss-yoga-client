@@ -54,7 +54,7 @@ const Dashboard = () => {
             <>
               <span className="ml-4 font-bold text-3xl text-red-500">Hi Students !</span>
               <li className="font-bold text-2xl my-[12px]">
-                <Link to="/dashboard/manageClasses">
+                <Link to="/dashboard/myselectedclass">
                   <FaAddressBook className="mr-4" /> Selected Classes
                 </Link>
               </li>

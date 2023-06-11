@@ -1,8 +1,63 @@
+import Swal from "sweetalert2";
+
 /* eslint-disable react/prop-types */
-const CardclassName = ({ selectClass }) => {
+const CardclassName = ({
+  selectClass,
+  isAdmin,
+  isInstructor,
+  axiosSecure,
+  user,
+}) => {
   const { className, name, price, seat, image } = selectClass;
+
+  const handleSelect = () => {
+    if (!user) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please log in before selecting the course.",
+      });
+      return;
+    }
+
+    if (isAdmin || isInstructor) {
+      alert("Admins/instructors cannot select a course.");
+      return;
+    }
+
+    // Prepare the data to send to the backend server
+    const data = {
+      className,
+      price:parseFloat(price).toFixed(2),
+      seat:parseFloat(seat).toFixed(2),
+      email: user.email,
+      image,
+    };
+
+    // Send the data to the backend server
+    axiosSecure.post("/studentclasses", data).then((res) => {
+      if (res.data.insertedId) {
+        console.log(res.data.insertedId);
+      }
+    });
+
+    // Handle course selection logic here
+    // Example implementation:
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: `You have selected the course: ${className}`,
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  };
+
   return (
-    <div className="card w-96 bg-base-100 shadow-xl">
+    <div
+      className={`card w-96 bg-base-100 ${
+        seat === 0 ? "bg-red-500" : "shadow-xl"
+      }`}
+    >
       <figure className="px-10 pt-10">
         <img src={image} alt="Shoes" className="rounded-xl" />
       </figure>
@@ -21,11 +76,11 @@ const CardclassName = ({ selectClass }) => {
           : {name}
         </h3>
 
-        <h4 className=" my-4">
+        <h4 className="my-4">
           <span className="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-1 text-white font-bold rounded-md mr-2">
             Available Seat
           </span>
-          : <span className="">{seat}</span>
+          : <span className={seat === 0 ? "text-red-500" : ""}>{seat}</span>
         </h4>
         <h4 className="">
           <span className="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-1 text-white font-bold rounded-md mr-2">
@@ -33,7 +88,15 @@ const CardclassName = ({ selectClass }) => {
           </span>
           : <span className="font-bold">{price}</span>
         </h4>
-        <button className="btn btn-outline btn-success mt-4">Select</button>
+        <button
+          className={`btn btn-outline btn-success mt-4 ${
+            seat === 0 || isAdmin || isInstructor ? "disabled" : ""
+          }`}
+          onClick={handleSelect}
+          disabled={seat === 0 || isAdmin || isInstructor}
+        >
+          Select
+        </button>
       </div>
     </div>
   );
