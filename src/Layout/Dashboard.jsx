@@ -24,7 +24,9 @@ const Dashboard = () => {
         <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
           {isAdmin ? (
             <>
-              <span className="ml-4 font-bold text-3xl text-red-500">Hi Admin !</span>
+              <span className="ml-4 font-bold text-3xl text-red-500">
+                Hi Admin !
+              </span>
               <li className="font-bold text-2xl my-8">
                 <Link to="/dashboard/manageClasses">
                   <FaAddressBook className="mr-4" /> Manage Classes
@@ -38,7 +40,9 @@ const Dashboard = () => {
             </>
           ) : isInstructor ? (
             <>
-              <span className="ml-4 font-bold text-3xl text-red-500">Hi Instructors !</span>
+              <span className="ml-4 font-bold text-3xl text-red-500">
+                Hi Instructors !
+              </span>
               <li className="font-bold text-2xl my-8">
                 <Link to="/dashboard/addclass">
                   <FaAddressBook className="mr-4" /> Add a Class
@@ -52,19 +56,21 @@ const Dashboard = () => {
             </>
           ) : (
             <>
-              <span className="ml-4 font-bold text-3xl text-red-500">Hi Students !</span>
+              <span className="ml-4 font-bold text-3xl text-red-500">
+                Hi Students !
+              </span>
               <li className="font-bold text-2xl my-[12px]">
                 <Link to="/dashboard/myselectedclass">
                   <FaAddressBook className="mr-4" /> Selected Classes
                 </Link>
               </li>
               <li className="font-bold text-2xl my-3">
-                <Link to="/dashboard/manageUsers">
+                <Link to="/dashboard/enrolledclass">
                   <FaUsers className="mr-4" /> Enrolled Classes
                 </Link>
               </li>
               <li className="font-bold text-2xl mt-1">
-                <Link to="/dashboard/manageUsers">
+                <Link to="/dashboard/paymenthistory">
                   <FaUsers className="mr-4" /> Payment History
                 </Link>
               </li>

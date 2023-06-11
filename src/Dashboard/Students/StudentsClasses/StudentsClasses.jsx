@@ -2,10 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import TitleSection from "../../../components/TitleSection";
 import useAuth from "../../../hooks/useAuth";
 import { FaAmazonPay, FaTrashAlt } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const StudentsClasses = () => {
   const { user } = useAuth();
-  const { data: studentclasses = [] } = useQuery(
+  const { data: studentclasses = [], refetch } = useQuery(
     ["studentclasses"],
     async () => {
       const res = await fetch(
@@ -15,6 +16,31 @@ const StudentsClasses = () => {
     }
   );
   console.log(studentclasses);
+
+  const handleDeletedClass = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/studentclasses/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              refetch();
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            }
+          });
+      }
+    });
+  };
 
   return (
     <div>
@@ -54,12 +80,16 @@ const StudentsClasses = () => {
                 <td className="font-bold text-xl">{classes.price}</td>
                 <td>
                   <button>
-                    <FaAmazonPay style={{fontSize:"35px"}} />
+                    <FaAmazonPay title="pay" style={{ fontSize: "35px" }} />
                   </button>
                 </td>
                 <td>
-                  <button>
-                    <FaTrashAlt className="ml-5 text-red-500" style={{fontSize:"30px"}} />
+                  <button onClick={() => handleDeletedClass(classes._id)}>
+                    <FaTrashAlt
+                      title="delete"
+                      className="ml-5 text-red-500"
+                      style={{ fontSize: "30px" }}
+                    />
                   </button>
                 </td>
               </tr>
