@@ -8,7 +8,7 @@ const CardclassName = ({
   axiosSecure,
   user,
 }) => {
-  const { className, name, price, seat, image } = selectClass;
+  const { className, name, price, seat, image, enrolled } = selectClass;
 
   const handleSelect = () => {
     if (!user) {
@@ -28,8 +28,9 @@ const CardclassName = ({
     // Prepare the data to send to the backend server
     const data = {
       className,
-      price:parseFloat(price).toFixed(2),
-      seat:parseFloat(seat).toFixed(2),
+      price,
+      enrolled,
+      seat,
       email: user.email,
       image,
     };
@@ -59,7 +60,11 @@ const CardclassName = ({
       }`}
     >
       <figure className="px-10 pt-10">
-        <img src={image} alt="Shoes" className="rounded-xl" />
+        <img
+          src={image}
+          alt="Shoes"
+          className="rounded-xl w-[450px] h-[400px]"
+        />
       </figure>
       <div className="card-body text-left">
         <h2 className="text-lg font-bold text-gray-900 sm:text-xl">

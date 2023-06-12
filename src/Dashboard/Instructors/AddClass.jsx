@@ -14,6 +14,7 @@ const AddClass = () => {
   const image_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`;
 
   const onSubmit = (data) => {
+    data.enrolled = 0;
     const formData = new FormData();
     formData.append("image", data.image[0]);
 
@@ -25,15 +26,16 @@ const AddClass = () => {
       .then((imageResponse) => {
         if (imageResponse.success) {
           const imgUrl = imageResponse.data.display_url;
-          const { name, price, className, email, seat } = data;
+          const { name, price, className, email, seat, enrolled } = data;
           const newItem = {
             name,
             email,
+            enrolled,
             className,
-            seat: parseFloat(seat),
-            price: parseFloat(price),
+            seat: parseInt(seat),
+            price: parseInt(price),
             image: imgUrl,
-            status: "pending"
+            status: "pending",
           };
           axiosSecure.post("/instructors", newItem).then((data) => {
             console.log(data.data);

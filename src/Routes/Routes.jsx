@@ -16,6 +16,7 @@ import UpdateData from "../Dashboard/Instructors/UpdateData";
 import StudentsClasses from "../Dashboard/Students/StudentsClasses/StudentsClasses";
 import EnrolledClasses from "../Dashboard/Students/EnrolledClasses/EnrolledClasses";
 import PaymentHistory from "../Dashboard/Students/PaymentHistory/PaymentHistory";
+import Payment from "../Dashboard/Students/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +62,12 @@ const router = createBrowserRouter([
       {
         path: "paymenthistory",
         element: <PaymentHistory />,
+      },
+      {
+        path: "payment/:id",
+        element: <Payment />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/paystudentclasses/${params.id}`),
       },
       // instructors routes
       {

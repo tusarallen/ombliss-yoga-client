@@ -3,6 +3,7 @@ import TitleSection from "../../../components/TitleSection";
 import useAuth from "../../../hooks/useAuth";
 import { FaAmazonPay, FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const StudentsClasses = () => {
   const { user } = useAuth();
@@ -79,9 +80,13 @@ const StudentsClasses = () => {
                 <td className="font-bold text-xl text-right">{classes.seat}</td>
                 <td className="font-bold text-xl">{classes.price}</td>
                 <td>
-                  <button>
-                    <FaAmazonPay title="pay" style={{ fontSize: "35px" }} />
-                  </button>
+                  <Link
+                    to={`/dashboard/payment/${classes._id}`}
+                  >
+                    <button>
+                      <FaAmazonPay title="pay" style={{ fontSize: "35px" }} />
+                    </button>
+                  </Link>
                 </td>
                 <td>
                   <button onClick={() => handleDeletedClass(classes._id)}>
