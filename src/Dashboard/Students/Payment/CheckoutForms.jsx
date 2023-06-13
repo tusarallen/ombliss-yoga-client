@@ -6,7 +6,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 
-const CheckoutForms = ({ paymentData , paymentId }) => {
+const CheckoutForms = ({ paymentData, paymentId, paymentClasses }) => {
   const [axiosSecure] = useAxiosSecure();
 
   const {
@@ -18,7 +18,7 @@ const CheckoutForms = ({ paymentData , paymentId }) => {
     selectId: _id,
     courseId,
   } = paymentData;
-  console.log(paymentId);
+  console.log(paymentClasses);
 
   const { user } = useAuth();
   const stripe = useStripe();
@@ -27,8 +27,15 @@ const CheckoutForms = ({ paymentData , paymentId }) => {
   const [clientSecret, setClientSecret] = useState("");
   const [processing, setProcessing] = useState(false);
   const [transactionId, setTransactionId] = useState("");
+  const [calsses, setCalsses] = useState([]);
 
   const price = parseFloat(paymentData.price.toFixed(2));
+
+  useEffect(() => {
+    fetch("http://localhost:5000/classes")
+      .then((res) => res.json())
+      .then((data) => setCalsses(data));
+  }, []);
 
   useEffect(() => {
     if (price > 0) {
@@ -86,6 +93,19 @@ const CheckoutForms = ({ paymentData , paymentId }) => {
     setProcessing(false);
     if (paymentIntent.status === "succeeded") {
       setTransactionId(paymentIntent.id);
+
+      const updatedSeat = calsses.map((cls) => {
+        if (cls._id === paymentId) {
+          axiosSecure
+            .put(`/classes/approved/${paymentId}`, {
+              seat: cls.seat - 1,
+              enrolled: cls.enrolled + 1,
+            })
+            .then((data) => console.log(data));
+        }
+      });
+      setCalsses(updatedSeat);
+
       // save payment information to the server
       const payment = {
         email: user?.email,
@@ -104,7 +124,7 @@ const CheckoutForms = ({ paymentData , paymentId }) => {
       };
       axiosSecure.post("/payments", payment).then((res) => {
         console.log(res.data);
-        if (res.data.insertPayment.deletePayment ) {
+        if (res.data.insertPayment.deletePayment) {
           Swal.fire({
             position: "top-end",
             icon: "success",

@@ -11,6 +11,8 @@ const Payment = () => {
   const paymentData = useLoaderData();
   const location = useLocation();
   const paymentId = location?.state?.paymentzid;
+  const paymentClasses = location?.state?.classesName;
+  console.log(paymentClasses);
 
   return (
     <div>
@@ -22,7 +24,11 @@ const Payment = () => {
         heading={"PAYMENT"}
       ></TitleSection>
       <Elements stripe={stripePromise}>
-        <CheckoutForms paymentData={paymentData} paymentId={paymentId} />
+        <CheckoutForms
+          paymentData={paymentData}
+          paymentId={paymentId}
+          paymentClasses={paymentClasses}
+        />
       </Elements>
     </div>
   );

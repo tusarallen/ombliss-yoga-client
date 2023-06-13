@@ -18,11 +18,15 @@ const DarkModeToggle = () => {
     <button onClick={toggleDarkMode}>
       {isDarkMode ? (
         <button className="bg-green-500 font-extrabold p-[10px] rounded-3xl">
-          Light Mode
+          <div className="flex justify-center items-center">
+            <div>Light</div> <div>Mode</div>
+          </div>
         </button>
       ) : (
         <button className="bg-green-500 font-extrabold p-[10px] rounded-3xl">
-          Dark Mode
+          <div className="flex justify-center items-center">
+            <div>Dark</div> <div>Mode</div>
+          </div>
         </button>
       )}
     </button>

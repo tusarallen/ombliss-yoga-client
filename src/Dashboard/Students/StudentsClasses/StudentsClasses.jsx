@@ -86,7 +86,10 @@ const StudentsClasses = () => {
                 <td>
                   <Link
                     to={`/dashboard/payment/${classes._id}`}
-                    state={{ paymentzid: classes._id }}
+                    state={{
+                      paymentzid: classes._id,
+                      classesName: classes.className,
+                    }}
                   >
                     <button>
                       <FaAmazonPay title="pay" style={{ fontSize: "35px" }} />
