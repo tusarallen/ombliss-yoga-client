@@ -5,3 +5,9 @@
 * {
   font-family: "Cardo", serif;
 }
+
+/* CSS styles for dark mode */
+.dark-mode {
+  background-color: #333;
+  color: #fff;
+}

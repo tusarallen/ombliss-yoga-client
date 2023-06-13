@@ -6,6 +6,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import useAdmin from "../../../hooks/useAdmin";
 import useInstructors from "../../../hooks/useInstructors";
+import DarkModeToggle from "../../../components/DarkModeToggle/DarkModeToggle";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -110,6 +111,9 @@ const NavBar = () => {
                   >
                     Classes
                   </NavLink>
+                </div>
+                <div>
+                  <DarkModeToggle />
                 </div>
                 {user ? (
                   <>

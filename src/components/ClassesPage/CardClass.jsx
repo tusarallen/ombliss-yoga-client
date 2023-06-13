@@ -82,6 +82,13 @@ const CardclassName = ({
           : {name}
         </h3>
 
+        <h4>
+          <span className="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-1 text-white font-bold rounded-md mr-2">
+            Enrolled
+          </span>
+          : <span className={seat === 0 ? "text-red-500" : ""}>0{enrolled}</span>
+        </h4>
+
         <h4 className="my-4">
           <span className="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-1 text-white font-bold rounded-md mr-2">
             Available Seat
