@@ -8,7 +8,7 @@ const CardclassName = ({
   axiosSecure,
   user,
 }) => {
-  const { className, name, price, seat, image, enrolled } = selectClass;
+  const { className, name, price, seat, image, enrolled, _id } = selectClass;
 
   const handleSelect = () => {
     if (!user) {
@@ -33,6 +33,7 @@ const CardclassName = ({
       seat,
       email: user.email,
       image,
+      courseId: _id,
     };
 
     // Send the data to the backend server

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
@@ -5,7 +6,9 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 
-const CheckoutForms = ({ paymentData }) => {
+const CheckoutForms = ({ paymentData , paymentId }) => {
+  const [axiosSecure] = useAxiosSecure();
+
   const {
     classId,
     seat,
@@ -13,11 +16,13 @@ const CheckoutForms = ({ paymentData }) => {
     className,
     image,
     selectId: _id,
+    courseId,
   } = paymentData;
+  console.log(paymentId);
+
   const { user } = useAuth();
   const stripe = useStripe();
   const elements = useElements();
-  const [axiosSecure] = useAxiosSecure();
   const [cardError, setCardError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const [processing, setProcessing] = useState(false);
@@ -92,12 +97,14 @@ const CheckoutForms = ({ paymentData }) => {
         enrolled,
         className,
         image,
+        courseId,
+        paymentId,
         date: new Date(),
         selectId: _id,
       };
       axiosSecure.post("/payments", payment).then((res) => {
         console.log(res.data);
-        if (res.data.insertedId) {
+        if (res.data.insertPayment.deletePayment ) {
           Swal.fire({
             position: "top-end",
             icon: "success",

@@ -81,7 +81,7 @@ const StudentsClasses = () => {
                 <td className="font-bold text-xl">{classes.price}</td>
                 <td>
                   <Link
-                    to={`/dashboard/payment/${classes._id}`}
+                    to={`/dashboard/payment/${classes._id}`} state={{paymentzid: classes._id}}
                   >
                     <button>
                       <FaAmazonPay title="pay" style={{ fontSize: "35px" }} />

@@ -138,8 +138,8 @@ const NavBar = () => {
                       >
                         <div className="w-10 rounded-full">
                           <img
-                            title={user && user.displayName}
-                            src={user && user.photoURL}
+                            title={user && user?.displayName}
+                            src={(user && user?.photoURL) || user?.photo}
                           />
                         </div>
                       </label>
