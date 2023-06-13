@@ -3,6 +3,7 @@ import TitleSection from "../../../components/TitleSection";
 import CheckoutForms from "./CheckoutForms";
 import { Elements } from "@stripe/react-stripe-js";
 import { useLoaderData, useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 
@@ -13,6 +14,9 @@ const Payment = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>ŌmBliss Yoĝa | Payment Page</title>
+      </Helmet>
       <TitleSection
         subHeading={"please provide?"}
         heading={"PAYMENT"}

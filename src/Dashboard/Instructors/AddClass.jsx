@@ -3,6 +3,7 @@ import TitleSection from "../../components/TitleSection";
 import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
+import { Helmet } from "react-helmet";
 
 const image_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 
@@ -56,6 +57,9 @@ const AddClass = () => {
 
   return (
     <div className="w-full px-10 font-bold text-xl">
+      <Helmet>
+        <title>ŌmBliss Yoĝa | Add Class</title>
+      </Helmet>
       <div>
         <TitleSection
           subHeading={"what's new?"}

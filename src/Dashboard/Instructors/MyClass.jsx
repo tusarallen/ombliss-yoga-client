@@ -2,6 +2,7 @@
 import ClassCard from "./ClassCard";
 import TitleSection from "../../components/TitleSection";
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet";
 
 const MyClass = () => {
   const { data: instructors = [] } = useQuery(["instructors"], async () => {
@@ -11,6 +12,9 @@ const MyClass = () => {
 
   return (
     <>
+      <Helmet>
+        <title>ŌmBliss Yoĝa | My Class</title>
+      </Helmet>
       <TitleSection
         subHeading={"Add More?"}
         heading={"Your Classes"}

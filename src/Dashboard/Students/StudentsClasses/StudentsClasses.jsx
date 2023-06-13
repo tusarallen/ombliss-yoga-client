@@ -4,6 +4,7 @@ import useAuth from "../../../hooks/useAuth";
 import { FaAmazonPay, FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const StudentsClasses = () => {
   const { user } = useAuth();
@@ -45,6 +46,9 @@ const StudentsClasses = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>ŌmBliss Yoĝa | Class</title>
+      </Helmet>
       <TitleSection
         subHeading={"Hi Students?"}
         heading={"Your Classes"}
@@ -81,7 +85,8 @@ const StudentsClasses = () => {
                 <td className="font-bold text-xl">{classes.price}</td>
                 <td>
                   <Link
-                    to={`/dashboard/payment/${classes._id}`} state={{paymentzid: classes._id}}
+                    to={`/dashboard/payment/${classes._id}`}
+                    state={{ paymentzid: classes._id }}
                   >
                     <button>
                       <FaAmazonPay title="pay" style={{ fontSize: "35px" }} />

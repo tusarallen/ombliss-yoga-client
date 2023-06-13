@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import TitleSection from "../TitleSection";
 import CardInstructor from "./CardInstructor";
+import { Helmet } from "react-helmet";
 
 const InstructorsPage = () => {
   const { data: instructors = [] } = useQuery(["instructors"], async () => {
@@ -11,6 +12,9 @@ const InstructorsPage = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>ŌmBliss Yoĝa | Instructor</title>
+      </Helmet>
       <TitleSection
         subHeading={"Familiar To"}
         heading={"Our Advicer"}

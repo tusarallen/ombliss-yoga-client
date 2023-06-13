@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
-const CardInstructor = ({ instructor }) => {
-  const { photo, name, email } = instructor;
-  
-  console.log(instructor)
+const PopularCardInstructors = ({ instructors }) => {
+  const { photo, name, email } = instructors;
+
   return (
     <div className="card card-compact w-96 bg-base-100 shadow-xl">
       <figure>
@@ -16,4 +15,4 @@ const CardInstructor = ({ instructor }) => {
   );
 };
 
-export default CardInstructor;
+export default PopularCardInstructors;

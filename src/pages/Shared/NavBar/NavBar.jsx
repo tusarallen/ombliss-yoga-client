@@ -126,7 +126,7 @@ const NavBar = () => {
                           ? "pending"
                           : isActive
                           ? "text-[#ff7700] px-3 py-2 rounded-md text-xl  font-bold"
-                          : "text-[#1A1919] hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl font-medium"
+                          : "text-[#1A1919] hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl font-bold"
                       }
                     >
                       Dashboard

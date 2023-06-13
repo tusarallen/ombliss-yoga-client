@@ -5,6 +5,7 @@ import useAdmin from "../../hooks/useAdmin";
 import useInstructors from "../../hooks/useInstructors";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet";
 
 const ClassesPage = () => {
   const { data: classes = [] } = useQuery(["classes"], async () => {
@@ -20,6 +21,9 @@ const ClassesPage = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>ŌmBliss Yoĝa | Classes</title>
+      </Helmet>
       <TitleSection
         subHeading={"Hi Students?"}
         heading={"Enrolled Classes Here"}

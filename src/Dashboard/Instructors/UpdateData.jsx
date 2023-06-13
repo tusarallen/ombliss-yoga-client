@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import TitleSection from "../../components/TitleSection";
+import { Helmet } from "react-helmet";
 
 const UpdateData = () => {
   const classes = useLoaderData();
@@ -46,9 +47,10 @@ const UpdateData = () => {
 
   return (
     <>
-      <TitleSection
-        heading={"Update Classes"}
-      ></TitleSection>
+      <Helmet>
+        <title>ŌmBliss Yoĝa | Update Page</title>
+      </Helmet>
+      <TitleSection heading={"Update Classes"}></TitleSection>
       <div className="font-bold">
         <form onSubmit={handleUpdateClass}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-11/12 mx-auto mt-5 font-bold">
@@ -84,13 +86,13 @@ const UpdateData = () => {
               <span className="label-text">Class Name</span>
             </label>
             <input
-                type="text"
-                name="className"
-                className="input input-bordered text-gray-500"
-                defaultValue={className}
-                placeholder="Class Name"
-                required
-              />
+              type="text"
+              name="className"
+              className="input input-bordered text-gray-500"
+              defaultValue={className}
+              placeholder="Class Name"
+              required
+            />
           </div>
           <div className="form-control mt-6 mb-12 w-11/12 mx-auto">
             <input

@@ -7,6 +7,8 @@
 
 # Website Name: ŌmBliss Yoĝa School
 
+![Logo](https://i.ibb.co/1v7xsrY/Dark-Green-White-Modern-Yoga-Logo.png)
+
 Logo: Design a serene and captivating logo representing the essence of yoga, such as a lotus flower or a meditating figure in a tranquil setting.
 
 # Implement React Router DOM:
