@@ -16,8 +16,8 @@ const InstructorsPage = () => {
         <title>ŌmBliss Yoĝa | Instructor</title>
       </Helmet>
       <TitleSection
-        subHeading={"Familiar To"}
-        heading={"Our Advicer"}
+        subHeading={"Our Popular"}
+        heading={"Instructors"}
       ></TitleSection>
       <div className="mt-8 grid md:grid-cols-3 grid-cols-1 gap-8 w-11/12 mx-auto mb-8">
         {instructors.map((instructor) => (
