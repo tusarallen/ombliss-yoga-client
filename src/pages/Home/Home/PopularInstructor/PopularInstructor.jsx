@@ -6,7 +6,7 @@ const PopularInstructor = () => {
   const { data: popularInstructors = [] } = useQuery(
     ["popularInstructors"],
     async () => {
-      const res = await fetch("http://localhost:5000/popularinstructors");
+      const res = await fetch("https://om-bliss-yoga-server.vercel.app/popularinstructors");
       return res.json();
     }
   );

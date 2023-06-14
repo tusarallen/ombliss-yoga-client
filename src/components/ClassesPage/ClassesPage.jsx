@@ -9,7 +9,7 @@ import { Helmet } from "react-helmet";
 
 const ClassesPage = () => {
   const { data: classes = [] } = useQuery(["classes"], async () => {
-    const res = await fetch("http://localhost:5000/classes");
+    const res = await fetch("https://om-bliss-yoga-server.vercel.app/classes");
     return res.json();
   });
   console.log(classes);

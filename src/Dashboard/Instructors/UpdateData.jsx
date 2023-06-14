@@ -24,7 +24,7 @@ const UpdateData = () => {
     console.log(info);
 
     // send data to the server
-    fetch(`http://localhost:5000/instructors/${_id}`, {
+    fetch(`https://om-bliss-yoga-server.vercel.app/instructors/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

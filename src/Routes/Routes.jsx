@@ -73,7 +73,7 @@ const router = createBrowserRouter([
         path: "payment/:id",
         element: <Payment />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/paystudentclasses/${params.id}`),
+          fetch(`https://om-bliss-yoga-server.vercel.app/paystudentclasses/${params.id}`),
       },
       // instructors routes
       {
@@ -100,7 +100,7 @@ const router = createBrowserRouter([
           </InstructorRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/instructors/${params.id}`),
+          fetch(`https://om-bliss-yoga-server.vercel.app/instructors/${params.id}`),
       },
       // admin routes
       {

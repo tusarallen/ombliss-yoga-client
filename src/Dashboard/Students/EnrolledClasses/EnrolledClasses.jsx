@@ -9,7 +9,7 @@ const EnrolledClasses = () => {
   const [axiosSecure] = useAxiosSecure();
   const { data: classes = [] } = useQuery(["classes"], async () => {
     const res = await axiosSecure.get(
-      `http://localhost:5000/getpayments?email=${user?.email}`
+      `https://om-bliss-yoga-server.vercel.app/getpayments?email=${user?.email}`
     );
     return res.data;
   });

@@ -32,7 +32,7 @@ const CheckoutForms = ({ paymentData, paymentId, paymentClasses }) => {
   const price = parseFloat(paymentData.price.toFixed(2));
 
   useEffect(() => {
-    fetch("http://localhost:5000/classes")
+    fetch("https://om-bliss-yoga-server.vercel.app/classes")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -100,7 +100,7 @@ const CheckoutForms = ({ paymentData, paymentId, paymentClasses }) => {
 
       const updatedSeat = calsses.map((cls) => {
         if (cls._id === paymentData.courseId) {
-          fetch(`http://localhost:5000/classes/approved/${paymentData.courseId}`, {
+          fetch(`https://om-bliss-yoga-server.vercel.app/classes/approved/${paymentData.courseId}`, {
             method: "PUT",
             headers: {
               "content-type": "application/json",

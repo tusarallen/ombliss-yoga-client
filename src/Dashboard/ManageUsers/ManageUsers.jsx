@@ -12,7 +12,7 @@ const ManageUsers = () => {
   });
 
   const updateUserRole = (user, role) => {
-    fetch(`http://localhost:5000/users/${role}/${user?._id}`, {
+    fetch(`https://om-bliss-yoga-server.vercel.app/users/${role}/${user?._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())

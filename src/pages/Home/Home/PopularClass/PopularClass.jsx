@@ -5,7 +5,7 @@ import PopularCard from "./PopularCard";
 
 const PopularClass = () => {
   const { data: classes = [] } = useQuery(["classes"], async () => {
-    const res = await fetch("http://localhost:5000/classes/homepage");
+    const res = await fetch("https://om-bliss-yoga-server.vercel.app/classes/homepage");
     return res.json();
   });
   console.log(classes);

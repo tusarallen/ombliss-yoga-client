@@ -12,7 +12,7 @@ const StudentsClasses = () => {
     ["studentclasses"],
     async () => {
       const res = await fetch(
-        `http://localhost:5000/studentclasses?email=${user?.email}`
+        `https://om-bliss-yoga-server.vercel.app/studentclasses?email=${user?.email}`
       );
       return res.json();
     }
@@ -30,7 +30,7 @@ const StudentsClasses = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/studentclasses/${id}`, {
+        fetch(`https://om-bliss-yoga-server.vercel.app/studentclasses/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

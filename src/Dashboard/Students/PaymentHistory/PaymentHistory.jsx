@@ -9,7 +9,7 @@ const PaymentHistory = () => {
   const [axiosSecure] = useAxiosSecure();
   const { data: historys = [] } = useQuery(["historys"], async () => {
     const res = await axiosSecure.get(
-      `http://localhost:5000/getpayments?email=${user?.email}`
+      `https://om-bliss-yoga-server.vercel.app/getpayments?email=${user?.email}`
     );
     return res.data;
   });

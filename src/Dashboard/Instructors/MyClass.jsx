@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet";
 
 const MyClass = () => {
   const { data: instructors = [] } = useQuery(["instructors"], async () => {
-    const res = await fetch("http://localhost:5000/instructors");
+    const res = await fetch("https://om-bliss-yoga-server.vercel.app/instructors");
     return res.json();
   });
 
