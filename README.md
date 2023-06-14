@@ -1,5 +1,5 @@
-<p align="center">Live link: https://chef-recipe-hunter-with-auth.web.app/</p>
-<h3 align="center"><a href="https://chef-recipe-hunter-with-auth.web.app/">ŌmBliss Yoĝa School</a></h3>
+<p align="center">Live link: https://ombliss-yoga.web.app/</p>
+<h3 align="center"><a href="https://ombliss-yoga.web.app/">ŌmBliss Yoĝa School</a></h3>
 
 # Project Overview:
 

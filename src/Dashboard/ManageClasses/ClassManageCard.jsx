@@ -109,7 +109,7 @@ const ClassManageCard = ({ instructor, refetch }) => {
             >
               Denied
             </button>
-            <button className="btn" onClick={() => handleFeedbackButton(_id)}>
+            <button className="btn bg-black text-white" onClick={() => handleFeedbackButton(_id)}>
               FeedBack
             </button>
           </div>
