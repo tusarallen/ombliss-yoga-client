@@ -203,14 +203,14 @@ const NavBar = () => {
           </Link>
 
           <Link
-            to="/alltoys"
+            to="/instructors"
             className="text-black hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-bold"
           >
             Instructors
           </Link>
 
           <Link
-            to="/blog"
+            to="/classes"
             className="text-black hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-bold"
           >
             Classes
@@ -219,7 +219,7 @@ const NavBar = () => {
           {user ? (
             <>
               <Link
-                to="/addtoys"
+                to="/dashboard/manageUsers"
                 className="text-[#1A1919] hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-bold"
               >
                 Dashboard
