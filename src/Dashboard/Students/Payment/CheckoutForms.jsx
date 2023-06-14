@@ -34,8 +34,12 @@ const CheckoutForms = ({ paymentData, paymentId, paymentClasses }) => {
   useEffect(() => {
     fetch("http://localhost:5000/classes")
       .then((res) => res.json())
-      .then((data) => setCalsses(data));
+      .then((data) => {
+        console.log(data);
+        setCalsses(data);
+      });
   }, []);
+  console.log(calsses);
 
   useEffect(() => {
     if (price > 0) {
@@ -95,16 +99,38 @@ const CheckoutForms = ({ paymentData, paymentId, paymentClasses }) => {
       setTransactionId(paymentIntent.id);
 
       const updatedSeat = calsses.map((cls) => {
-        if (cls._id === paymentId) {
-          axiosSecure
-            .put(`/classes/approved/${paymentId}`, {
+        if (cls._id === paymentData.courseId) {
+          fetch(`http://localhost:5000/classes/approved/${paymentData.courseId}`, {
+            method: "PUT",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify({
               seat: cls.seat - 1,
               enrolled: cls.enrolled + 1,
-            })
-            .then((data) => console.log(data));
+            }),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log("available seat is here", data);
+            });
         }
       });
       setCalsses(updatedSeat);
+      //   if(cls._id === paymentData.courseId) {
+      //     fetch(`/classes/approved/${paymentData.courseId}`), {
+      //       method:"PUT",
+      //       headers: {
+      //         "content-type": "application/json",
+      //       },
+      //       body:JSON.stringify({seat:cls.seat - 1, enrolled:cls.enrolled + 1}),
+      //     })
+      //     .then(res => res.json())
+
+      //     }
+      //   }
+      // });
+      // setCalsses(updatedSeat);
 
       // save payment information to the server
       const payment = {
