@@ -11,7 +11,6 @@ const ManageClasses = () => {
       return res.json();
     }
   );
-  console.log(instructors);
 
   return (
     <>
