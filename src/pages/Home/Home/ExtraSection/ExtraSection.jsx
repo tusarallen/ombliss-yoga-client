@@ -49,7 +49,7 @@ const ExtraSection = () => {
           />
         </div>
         <div
-          data-aos="fade-left" // Animation for the fourth div
+          data-aos="fade-left"
         >
           <img
             className="rounded-md"
