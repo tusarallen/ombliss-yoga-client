@@ -2,7 +2,8 @@ import { Helmet } from "react-helmet";
 import Slider from "../Slider/Slider";
 import ExtraSection from "../ExtraSection/ExtraSection";
 import PopularInstructor from "../PopularInstructor/PopularInstructor";
-import PopularClass from "../PopularClass/PopularClass";
+import YogaZone from "../../../../Polish/YogaZone/YogaZone";
+import Counter from "../../../../Polish/Counter/Counter";
 
 const Home = () => {
   return (
@@ -11,8 +12,9 @@ const Home = () => {
         <title>ŌmBliss Yoĝa | Home</title>
       </Helmet>
       <Slider />
+      <YogaZone />
+      <Counter />
       <PopularInstructor />
-      <PopularClass />
       <ExtraSection />
     </div>
   );
