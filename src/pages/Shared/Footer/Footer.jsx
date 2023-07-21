@@ -11,7 +11,7 @@ import {
 const Footer = () => {
   return (
     <div>
-      <footer aria-label="Site Footer" className="bg-gray-100">
+      <footer aria-label="Site Footer" className="bg-black">
         <div className="max-w-screen-xl px-4 py-8 mx-auto space-y-8 sm:px-6 lg:space-y-8 lg:px-8">
           <div className="sm:flex sm:items-center sm:justify-between">
             <div className="text-teal-600">
@@ -26,7 +26,7 @@ const Footer = () => {
                     </div>
                     <div className="flex-shrink-0 text-center">
                       <div>
-                        <h1 className="text-[#1A1919] font-extrabold text-3xl pt-2">
+                        <h1 className="text-white font-extrabold text-3xl pt-2">
                           ŌmBliss Yoĝa
                         </h1>
                       </div>
@@ -44,35 +44,35 @@ const Footer = () => {
             <ul className="flex justify-start gap-6 mt-8 sm:mt-0 sm:justify-end">
               <li>
                 <FaFacebook
-                  className="cursor-pointer"
+                  className="cursor-pointer text-white"
                   style={{ fontSize: "30px" }}
                 />
               </li>
 
               <li>
                 <FaInstagram
-                  className="cursor-pointer"
+                  className="cursor-pointer text-white"
                   style={{ fontSize: "30px" }}
                 />
               </li>
 
               <li>
                 <FaTwitter
-                  className="cursor-pointer"
+                  className="cursor-pointer text-white"
                   style={{ fontSize: "30px" }}
                 />
               </li>
 
               <li>
                 <FaGithub
-                  className="cursor-pointer"
+                  className="cursor-pointer text-white"
                   style={{ fontSize: "30px" }}
                 />
               </li>
 
               <li>
                 <FaStripe
-                  className="cursor-pointer"
+                  className="cursor-pointer text-white"
                   style={{ fontSize: "30px" }}
                 />
               </li>
@@ -81,14 +81,14 @@ const Footer = () => {
 
           <div className="grid grid-cols-1 gap-8 border-t border-gray-100 sm:grid-cols-2 lg:grid-cols-4 lg:pt-8">
             <div>
-              <p className="font-bold text-2xl text-gray-900">Services</p>
+              <p className="font-bold text-2xl text-gray-400">Services</p>
 
               <nav aria-label="Footer Navigation - Services" className="mt-6">
                 <ul className="space-y-4 text-sm">
                   <li>
                     <a
                       href="#"
-                      className="text-gray-700 transition hover:opacity-75 font-bold text-normal"
+                      className="text-gray-300 transition hover:opacity-75 font-bold text-normal"
                     >
                       1on1 Coaching
                     </a>
@@ -97,7 +97,7 @@ const Footer = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-gray-700 transition hover:opacity-75 font-bold"
+                      className="text-gray-300 transition hover:opacity-75 font-bold"
                     >
                       School Review
                     </a>
@@ -106,7 +106,7 @@ const Footer = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-gray-700 transition hover:opacity-75 font-bold"
+                      className="text-gray-300 transition hover:opacity-75 font-bold"
                     >
                       Accounts Review
                     </a>
@@ -115,7 +115,7 @@ const Footer = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-gray-700 transition hover:opacity-75 font-bold"
+                      className="text-gray-300 transition hover:opacity-75 font-bold"
                     >
                       SEO Optimisation
                     </a>
@@ -125,14 +125,14 @@ const Footer = () => {
             </div>
 
             <div>
-              <p className="font-bold text-2xl text-gray-900">About</p>
+              <p className="font-bold text-2xl text-gray-400">About</p>
 
               <nav aria-label="Footer Navigation - Company" className="mt-6">
                 <ul className="space-y-4 text-sm">
                   <li>
                     <a
                       href="#"
-                      className="text-gray-700 transition hover:opacity-75 font-bold"
+                      className="text-gray-300 transition hover:opacity-75 font-bold"
                     >
                       About
                     </a>
@@ -141,7 +141,7 @@ const Footer = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-gray-700 transition hover:opacity-75 font-bold"
+                      className="text-gray-300 transition hover:opacity-75 font-bold"
                     >
                       Meet the Team
                     </a>
@@ -150,7 +150,7 @@ const Footer = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-gray-700 transition hover:opacity-75 font-bold"
+                      className="text-gray-300 transition hover:opacity-75 font-bold"
                     >
                       Accounts Review
                     </a>
@@ -160,14 +160,14 @@ const Footer = () => {
             </div>
 
             <div>
-              <p className="font-bold text-2xl text-gray-900">Contact</p>
+              <p className="font-bold text-2xl text-gray-400">Contact</p>
 
               <nav aria-label="Footer Navigation - Company" className="mt-6">
                 <ul className="space-y-4 text-sm">
                   <li>
                     <a
                       href="#"
-                      className="text-gray-700 transition hover:opacity-75 font-bold"
+                      className="text-gray-300 transition hover:opacity-75 font-bold"
                     >
                       Contact
                     </a>
@@ -176,7 +176,7 @@ const Footer = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-gray-700 transition hover:opacity-75 font-bold"
+                      className="text-gray-300 transition hover:opacity-75 font-bold"
                     >
                       FAQs
                     </a>
@@ -185,7 +185,7 @@ const Footer = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-gray-700 transition hover:opacity-75 font-bold"
+                      className="text-gray-300 transition hover:opacity-75 font-bold"
                     >
                       Live Chat
                     </a>
@@ -195,14 +195,14 @@ const Footer = () => {
             </div>
 
             <div>
-              <p className="font-bold text-2xl text-gray-900">Legal</p>
+              <p className="font-bold text-2xl text-gray-400">Legal</p>
 
               <nav aria-label="Footer Navigation - Legal" className="mt-6">
                 <ul className="space-y-4 text-sm">
                   <li>
                     <a
                       href="#"
-                      className="text-gray-700 transition hover:opacity-75 font-bold"
+                      className="text-gray-300 transition hover:opacity-75 font-bold"
                     >
                       Accessibility
                     </a>
@@ -211,7 +211,7 @@ const Footer = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-gray-700 transition hover:opacity-75 font-bold"
+                      className="text-gray-300 transition hover:opacity-75 font-bold"
                     >
                       Returns Policy
                     </a>
@@ -220,7 +220,7 @@ const Footer = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-gray-700 transition hover:opacity-75 font-bold"
+                      className="text-gray-300 transition hover:opacity-75 font-bold"
                     >
                       Refund Policy
                     </a>
@@ -229,7 +229,7 @@ const Footer = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-gray-700 transition hover:opacity-75 font-bold"
+                      className="text-gray-300 transition hover:opacity-75 font-bold"
                     >
                       Hiring Statistics
                     </a>
@@ -239,7 +239,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-gray-400">
             &copy; 2022. OmBliss Yoga School. All rights reserved.
           </p>
         </div>

@@ -7,6 +7,10 @@ import Counter from "../../../../Polish/Counter/Counter";
 import About from "../../../../Polish/About/About";
 import FAQs from "../../../../Polish/FAQs/FAQs";
 import Audience from "../../../../Polish/Audience/Audience";
+import Hyper from "../../../../Polish/Hyper/Hyper";
+import Newsletter from "../../../../Polish/Newsletter/Newsletter";
+import Pricing from "../../../../Polish/Pricing/Pricing";
+import Testimonials from "../../../../Polish/Testimonials/Testimonials";
 
 const Home = () => {
   return (
@@ -16,12 +20,16 @@ const Home = () => {
       </Helmet>
       <Slider />
       <YogaZone />
+      <Pricing />
       <Counter />
       <About />
       <PopularInstructor />
       <Audience />
       <ExtraSection />
+      <Hyper />
+      <Testimonials />
       <FAQs />
+      <Newsletter />
     </div>
   );
 };
